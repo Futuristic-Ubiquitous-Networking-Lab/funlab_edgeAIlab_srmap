@@ -9,9 +9,9 @@
 
 body{
 margin:0;
-font-family: 'Segoe UI', sans-serif;
+font-family:'Segoe UI',sans-serif;
 
-/* Gradient + logo */
+/* Gradient + SRM logo watermark */
 
 background:
 linear-gradient(rgba(12,40,90,0.85), rgba(40,90,160,0.9)),
@@ -28,7 +28,7 @@ justify-content:center;
 align-items:center;
 }
 
-/* Card */
+/* Glass Card */
 
 .card{
 
@@ -50,7 +50,7 @@ box-shadow:0 15px 40px rgba(0,0,0,0.35);
 animation:fadeIn 1s ease;
 }
 
-/* Animation */
+/* Smooth entry animation */
 
 @keyframes fadeIn{
 from{opacity:0; transform:translateY(20px);}
@@ -75,7 +75,7 @@ animation:charge 2s infinite;
 100%{transform:scale(1)}
 }
 
-/* Title */
+/* Titles */
 
 h1{
 font-size:26px;
@@ -152,19 +152,7 @@ font-size:18px;
 color:#ffdede;
 }
 
-/* Footer */
-
-.footer{
-
-margin-top:20px;
-
-font-size:13px;
-
-opacity:0.8;
-}
-
 </style>
-
 
 <script>
 
@@ -186,6 +174,8 @@ document.getElementById("msg").innerHTML="Password Not Matched";
 
 }
 
+/* Enable Enter key login */
+
 function handleKey(event){
 
 if(event.key==="Enter"){
@@ -197,7 +187,6 @@ checkPassword();
 </script>
 
 </head>
-
 
 <body>
 
@@ -217,10 +206,6 @@ onkeypress="handleKey(event)">
 <button onclick="checkPassword()">Access</button>
 
 <p id="msg"></p>
-
-<div class="footer">
-Smart EV Charging Portal
-</div>
 
 </div>
 
