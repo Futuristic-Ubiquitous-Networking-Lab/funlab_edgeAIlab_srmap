@@ -11,8 +11,6 @@ body{
 margin:0;
 font-family:'Segoe UI',sans-serif;
 
-/* Gradient + SRM logo watermark */
-
 background:
 linear-gradient(rgba(12,40,90,0.85), rgba(40,90,160,0.9)),
 url("srm-logo.png");
@@ -22,60 +20,26 @@ background-repeat:no-repeat;
 background-position:center;
 
 height:100vh;
-
 display:flex;
 justify-content:center;
 align-items:center;
 }
 
-/* Glass Card */
-
 .card{
-
 background:rgba(255,255,255,0.18);
 backdrop-filter:blur(15px);
-
 padding:45px;
-
 border-radius:20px;
-
 width:340px;
-
 text-align:center;
-
 color:white;
-
 box-shadow:0 15px 40px rgba(0,0,0,0.35);
-
-animation:fadeIn 1s ease;
 }
-
-/* Smooth entry animation */
-
-@keyframes fadeIn{
-from{opacity:0; transform:translateY(20px);}
-to{opacity:1; transform:translateY(0);}
-}
-
-/* EV icon */
 
 .icon{
-
 font-size:42px;
-
 margin-bottom:10px;
-
-animation:charge 2s infinite;
 }
-
-@keyframes charge{
-
-0%{transform:scale(1)}
-50%{transform:scale(1.1)}
-100%{transform:scale(1)}
-}
-
-/* Titles */
 
 h1{
 font-size:26px;
@@ -88,93 +52,103 @@ font-weight:300;
 margin-bottom:25px;
 }
 
-/* Input */
-
 input{
-
 width:100%;
-
 padding:14px;
-
 font-size:18px;
-
 border-radius:8px;
-
 border:none;
-
 outline:none;
-
 box-sizing:border-box;
 }
 
-/* Button */
-
 button{
-
 width:100%;
-
 padding:14px;
-
 margin-top:15px;
-
 font-size:18px;
-
 border:none;
-
 border-radius:8px;
-
 background:white;
-
 color:#2a5298;
-
 font-weight:bold;
-
 cursor:pointer;
-
-transition:0.3s;
 }
-
-button:hover{
-
-background:#f0f0f0;
-
-transform:scale(1.02);
-}
-
-/* Message */
 
 #msg{
-
 margin-top:15px;
-
 font-size:18px;
-
 color:#ffdede;
+}
+
+#counter{
+margin-top:10px;
+font-size:22px;
+font-weight:bold;
 }
 
 </style>
 
 <script>
 
+function startCountdown(){
+
+let count = 15;
+
+document.getElementById("counter").innerHTML = count;
+
+let timer = setInterval(function(){
+
+count--;
+
+document.getElementById("counter").innerHTML = count;
+
+if(count <= 0){
+
+clearInterval(timer);
+
+location.reload();
+
+}
+
+},1000);
+
+}
+
+function sendCommand(value){
+
+fetch("https://api.thingspeak.com/update?api_key=F7T3NXT27WBZT5R1&field1="+value);
+
+document.getElementById("msg").innerHTML =
+"EV request initiated. Please wait...";
+
+startCountdown();
+
+}
+
 function checkPassword(){
 
 var password=document.getElementById("pass").value;
 
 if(password==="google123"){
-window.location.href="https://api.thingspeak.com/update?api_key=F7T3NXT27WBZT5R1&field1=500";
+
+sendCommand(500);
+
 }
 
 else if(password==="facebook123"){
-window.location.href="https://api.thingspeak.com/update?api_key=F7T3NXT27WBZT5R1&field1=700";
+
+sendCommand(700);
+
 }
 
 else{
-document.getElementById("msg").innerHTML="Password Not Matched";
-}
+
+location.reload();
 
 }
 
-/* Enable Enter key login */
+}
 
 function handleKey(event){
 
@@ -195,7 +169,6 @@ checkPassword();
 <div class="icon">⚡🚗</div>
 
 <h1>SRM University AP</h1>
-
 <h2>EV Facility for Staff & Faculty</h2>
 
 <input type="password"
@@ -206,6 +179,8 @@ onkeypress="handleKey(event)">
 <button onclick="checkPassword()">Access</button>
 
 <p id="msg"></p>
+
+<div id="counter"></div>
 
 </div>
 
