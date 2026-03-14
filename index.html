@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>SRM EV Facility</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+
+body{
+margin:0;
+font-family:Arial, sans-serif;
+
+/* background gradient + watermark logo */
+
+background:
+linear-gradient(rgba(18,40,90,0.85), rgba(40,80,150,0.85)),
+url("srm-logo.png");
+
+background-size:420px;
+background-repeat:no-repeat;
+background-position:center;
+
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+color:white;
+}
+
+/* login card */
+
+.card{
+
+background:rgba(255,255,255,0.15);
+backdrop-filter:blur(12px);
+
+padding:45px;
+border-radius:18px;
+
+box-shadow:0 10px 40px rgba(0,0,0,0.4);
+
+text-align:center;
+
+width:340px;
+}
+
+/* title */
+
+h1{
+font-size:26px;
+margin-bottom:6px;
+}
+
+h2{
+font-size:18px;
+font-weight:normal;
+margin-bottom:25px;
+}
+
+/* EV icon */
+
+.icon{
+font-size:40px;
+margin-bottom:10px;
+}
+
+/* input + button */
+
+input,button{
+
+width:100%;
+padding:14px;
+
+font-size:18px;
+
+border-radius:8px;
+
+box-sizing:border-box;
+}
+
+/* input */
+
+input{
+border:none;
+outline:none;
+}
+
+/* button */
+
+button{
+
+margin-top:15px;
+
+background:white;
+
+color:#2a5298;
+
+border:none;
+
+font-weight:bold;
+
+cursor:pointer;
+
+transition:0.3s;
+}
+
+button:hover{
+background:#e8e8e8;
+}
+
+/* message */
+
+#msg{
+margin-top:15px;
+font-size:18px;
+color:#ffdede;
+}
+
+</style>
+
+
+<script>
+
+function checkPassword(){
+
+var password=document.getElementById("pass").value;
+
+if(password==="google123"){
+window.location.href="https://api.thingspeak.com/update?api_key=F7T3NXT27WBZT5R1&field1=500";
+}
+
+else if(password==="facebook123"){
+window.location.href="https://api.thingspeak.com/update?api_key=F7T3NXT27WBZT5R1&field1=700";
+}
+
+else{
+document.getElementById("msg").innerHTML="Password Not Matched";
+}
+
+}
+
+/* enable enter key */
+
+function handleKey(event){
+if(event.key==="Enter"){
+checkPassword();
+}
+}
+
+</script>
+
+</head>
+
+
+<body>
+
+<div class="card">
+
+<div class="icon">⚡🚗</div>
+
+<h1>SRM University AP</h1>
+
+<h2>EV Facility for Staff & Faculty</h2>
+
+<input type="password"
+id="pass"
+placeholder="Enter Access Password"
+onkeypress="handleKey(event)">
+
+<button onclick="checkPassword()">Access</button>
+
+<p id="msg"></p>
+
+</div>
+
+</body>
+</html>
