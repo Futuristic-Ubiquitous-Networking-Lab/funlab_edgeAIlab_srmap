@@ -11,8 +11,6 @@ body{
 margin:0;
 font-family:'Segoe UI',sans-serif;
 
-/* RED GRADIENT BACKGROUND */
-
 background:
 linear-gradient(rgba(180,0,0,0.85), rgba(120,0,0,0.9)),
 url("srm-logo.png");
@@ -26,8 +24,6 @@ display:flex;
 justify-content:center;
 align-items:center;
 }
-
-/* GLASS CARD */
 
 .card{
 
@@ -50,17 +46,10 @@ box-shadow:0 15px 40px rgba(0,0,0,0.35);
 border:1px solid rgba(255,255,255,0.3);
 }
 
-/* ICON */
-
 .icon{
-
 font-size:42px;
-
 margin-bottom:10px;
-
 }
-
-/* TITLE */
 
 h1{
 font-size:26px;
@@ -72,8 +61,6 @@ font-size:18px;
 font-weight:300;
 margin-bottom:25px;
 }
-
-/* INPUT */
 
 input{
 
@@ -93,8 +80,6 @@ box-sizing:border-box;
 
 background:rgba(255,255,255,0.9);
 }
-
-/* BUTTON */
 
 button{
 
@@ -118,40 +103,18 @@ font-weight:bold;
 
 cursor:pointer;
 
-transition:0.3s;
-
 }
-
-button:hover{
-
-background:#f3f3f3;
-
-transform:scale(1.02);
-
-}
-
-/* MESSAGE */
 
 #msg{
-
 margin-top:15px;
-
 font-size:18px;
-
 color:#ffecec;
-
 }
 
-/* COUNTER */
-
 #counter{
-
 margin-top:10px;
-
 font-size:24px;
-
 font-weight:bold;
-
 }
 
 </style>
@@ -182,12 +145,11 @@ location.reload();
 
 }
 
-function sendCommand(value){
+function sendCommand(value,message){
 
 fetch("https://api.thingspeak.com/update?api_key=F7T3NXT27WBZT5R1&field1="+value);
 
-document.getElementById("msg").innerHTML =
-"EV request initiated. Please wait...";
+document.getElementById("msg").innerHTML = message;
 
 startCountdown();
 
@@ -199,13 +161,13 @@ var password=document.getElementById("pass").value;
 
 if(password==="google123"){
 
-sendCommand(500);
+sendCommand(500,"Request initiated from Parking Area");
 
 }
 
 else if(password==="facebook123"){
 
-sendCommand(700);
+sendCommand(700,"Request initiated from CV Raman Block");
 
 }
 
