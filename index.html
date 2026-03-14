@@ -11,8 +11,10 @@ body{
 margin:0;
 font-family:'Segoe UI',sans-serif;
 
+/* RED GRADIENT BACKGROUND */
+
 background:
-linear-gradient(rgba(12,40,90,0.85), rgba(40,90,160,0.9)),
+linear-gradient(rgba(180,0,0,0.85), rgba(120,0,0,0.9)),
 url("srm-logo.png");
 
 background-size:420px;
@@ -25,21 +27,40 @@ justify-content:center;
 align-items:center;
 }
 
+/* GLASS CARD */
+
 .card{
-background:rgba(255,255,255,0.18);
+
+background:rgba(255,255,255,0.15);
+
 backdrop-filter:blur(15px);
+
 padding:45px;
+
 border-radius:20px;
+
 width:340px;
+
 text-align:center;
+
 color:white;
+
 box-shadow:0 15px 40px rgba(0,0,0,0.35);
+
+border:1px solid rgba(255,255,255,0.3);
 }
 
+/* ICON */
+
 .icon{
+
 font-size:42px;
+
 margin-bottom:10px;
+
 }
+
+/* TITLE */
 
 h1{
 font-size:26px;
@@ -52,39 +73,85 @@ font-weight:300;
 margin-bottom:25px;
 }
 
+/* INPUT */
+
 input{
+
 width:100%;
+
 padding:14px;
+
 font-size:18px;
+
 border-radius:8px;
+
 border:none;
+
 outline:none;
+
 box-sizing:border-box;
+
+background:rgba(255,255,255,0.9);
 }
+
+/* BUTTON */
 
 button{
+
 width:100%;
+
 padding:14px;
+
 margin-top:15px;
+
 font-size:18px;
+
 border:none;
+
 border-radius:8px;
+
 background:white;
-color:#2a5298;
+
+color:#b00000;
+
 font-weight:bold;
+
 cursor:pointer;
+
+transition:0.3s;
+
 }
+
+button:hover{
+
+background:#f3f3f3;
+
+transform:scale(1.02);
+
+}
+
+/* MESSAGE */
 
 #msg{
+
 margin-top:15px;
+
 font-size:18px;
-color:#ffdede;
+
+color:#ffecec;
+
 }
 
+/* COUNTER */
+
 #counter{
+
 margin-top:10px;
-font-size:22px;
+
+font-size:24px;
+
 font-weight:bold;
+
 }
 
 </style>
@@ -144,7 +211,7 @@ sendCommand(700);
 
 else{
 
-location.reload();
+document.getElementById("msg").innerHTML="Wrong Password";
 
 }
 
@@ -169,6 +236,7 @@ checkPassword();
 <div class="icon">⚡🚗</div>
 
 <h1>SRM University AP</h1>
+
 <h2>EV Facility for Staff & Faculty</h2>
 
 <input type="password"
