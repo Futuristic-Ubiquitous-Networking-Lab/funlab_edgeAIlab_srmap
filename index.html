@@ -9,12 +9,12 @@
 
 body{
 margin:0;
-font-family:Arial, sans-serif;
+font-family: 'Segoe UI', sans-serif;
 
-/* background gradient + watermark logo */
+/* Gradient + logo */
 
 background:
-linear-gradient(rgba(18,40,90,0.85), rgba(40,80,150,0.85)),
+linear-gradient(rgba(12,40,90,0.85), rgba(40,90,160,0.9)),
 url("srm-logo.png");
 
 background-size:420px;
@@ -22,30 +22,60 @@ background-repeat:no-repeat;
 background-position:center;
 
 height:100vh;
+
 display:flex;
 justify-content:center;
 align-items:center;
-color:white;
 }
 
-/* login card */
+/* Card */
 
 .card{
 
-background:rgba(255,255,255,0.15);
-backdrop-filter:blur(12px);
+background:rgba(255,255,255,0.18);
+backdrop-filter:blur(15px);
 
 padding:45px;
-border-radius:18px;
 
-box-shadow:0 10px 40px rgba(0,0,0,0.4);
+border-radius:20px;
+
+width:340px;
 
 text-align:center;
 
-width:340px;
+color:white;
+
+box-shadow:0 15px 40px rgba(0,0,0,0.35);
+
+animation:fadeIn 1s ease;
 }
 
-/* title */
+/* Animation */
+
+@keyframes fadeIn{
+from{opacity:0; transform:translateY(20px);}
+to{opacity:1; transform:translateY(0);}
+}
+
+/* EV icon */
+
+.icon{
+
+font-size:42px;
+
+margin-bottom:10px;
+
+animation:charge 2s infinite;
+}
+
+@keyframes charge{
+
+0%{transform:scale(1)}
+50%{transform:scale(1.1)}
+100%{transform:scale(1)}
+}
+
+/* Title */
 
 h1{
 font-size:26px;
@@ -54,49 +84,48 @@ margin-bottom:6px;
 
 h2{
 font-size:18px;
-font-weight:normal;
+font-weight:300;
 margin-bottom:25px;
 }
 
-/* EV icon */
+/* Input */
 
-.icon{
-font-size:40px;
-margin-bottom:10px;
-}
-
-/* input + button */
-
-input,button{
+input{
 
 width:100%;
+
 padding:14px;
 
 font-size:18px;
 
 border-radius:8px;
 
+border:none;
+
+outline:none;
+
 box-sizing:border-box;
 }
 
-/* input */
-
-input{
-border:none;
-outline:none;
-}
-
-/* button */
+/* Button */
 
 button{
 
+width:100%;
+
+padding:14px;
+
 margin-top:15px;
+
+font-size:18px;
+
+border:none;
+
+border-radius:8px;
 
 background:white;
 
 color:#2a5298;
-
-border:none;
 
 font-weight:bold;
 
@@ -106,15 +135,32 @@ transition:0.3s;
 }
 
 button:hover{
-background:#e8e8e8;
+
+background:#f0f0f0;
+
+transform:scale(1.02);
 }
 
-/* message */
+/* Message */
 
 #msg{
+
 margin-top:15px;
+
 font-size:18px;
+
 color:#ffdede;
+}
+
+/* Footer */
+
+.footer{
+
+margin-top:20px;
+
+font-size:13px;
+
+opacity:0.8;
 }
 
 </style>
@@ -140,12 +186,12 @@ document.getElementById("msg").innerHTML="Password Not Matched";
 
 }
 
-/* enable enter key */
-
 function handleKey(event){
+
 if(event.key==="Enter"){
 checkPassword();
 }
+
 }
 
 </script>
@@ -171,6 +217,10 @@ onkeypress="handleKey(event)">
 <button onclick="checkPassword()">Access</button>
 
 <p id="msg"></p>
+
+<div class="footer">
+Smart EV Charging Portal
+</div>
 
 </div>
 
